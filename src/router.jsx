@@ -5,6 +5,7 @@ import MainLayout from "./components/layouts/Mainlayout";
 import Cart from "./pages/cart/Cart";
 import Register from "./pages/auth/register/Register";
 import Login from "./pages/auth/login/Login";
+import AuthLayout from "./components/layouts/Authlayout";
 
 
 const router = createBrowserRouter([
@@ -20,8 +21,14 @@ const router = createBrowserRouter([
         path: "cart",
         element: <Cart />,
       },
+    ]
+  }
+  ,{
+     path: "/",
+    element: <AuthLayout />,
+    children: [
       {
-        path: "login",
+        index: true,
         element: <Login />,
       },
       {
@@ -29,7 +36,8 @@ const router = createBrowserRouter([
         element: <Register />,
       },
     ]
-  },
+    },
+
 ]);
 
 export default router;
