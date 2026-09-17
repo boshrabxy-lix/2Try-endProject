@@ -19,12 +19,12 @@ const getTheme = (mode) => {
         dark: '#1D4ED8',
       },
       background: {
-        default: mode === 'light' ? '#DCE7EE' : '#121212',
+        default: mode === 'light' ?  '#121212': '#DCE7EE',
         paper: mode === 'light' ? '#EBF2F7' : '#0f0f0f',
       },
       text: {
-        primary: mode === 'light' ? '#2F3E46' : '#EBF2F7',
-        secondary: mode === 'light' ? '#5C6B73' : '#94A3B8',
+        primary: mode === 'light' ? '#EBF2F7' : '#2F3E46',
+        secondary: mode === 'light' ?'#94A3B8'  :'#5C6B73' ,
       },
       typography: {
         fontFamily: ['Tajawal', 'sans-serif'].join(','),

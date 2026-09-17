@@ -5,14 +5,16 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import getTheme from "./Theme";
 import useThemeStore from "./store/useThemeStore";
+
+
 export default function App() {
   const queryClient = new QueryClient();
-   const mode= useThemeStore((state)=>state.mode);
+  const mode = useThemeStore((state) => state.mode);
   return (
     <>
       <QueryClientProvider client={queryClient}>
+        <CssBaseline />
         <ThemeProvider theme={getTheme(mode)} >
-            <CssBaseline />
           <RouterProvider router={router} />
         </ThemeProvider>
       </QueryClientProvider>
