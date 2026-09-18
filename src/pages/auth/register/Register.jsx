@@ -53,16 +53,15 @@ export default function Register() {
 
   return (
     <Box sx={{ minHeight: '100vh', display: "flex", alignItems: "center", justifyContent: "center", p: { xs: 1.5, sm: 2 }, bgcolor: '#fff' }} >
-      <Box sx={{ width: "90%", }} >
-        <Box alignItems="center" justifyContent="space-between" flexWrap="wrap" sx={{ px: { xs: 2, md: 2 }, py: 2, }} >
+      <Box sx={{ width: "90%",px:2  }} >
 
+        <Box alignItems="center" justifyContent="space-between" flexWrap="wrap" sx={{ px: { xs: 2, md: 2 }, py: 2, }} >
           <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, justifyContent: "space-between", mb: 1.5 }} >
             <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, }} >
               <Avatar sx={{ bgcolor: '#0060732d', width: 35, height: 35, fontSize: 13, boxShadow: "0 0 0 1px rgba(208,169,254,0.35), 0 30px 70px -30px rgba(74,21,75,0.35)", fontWeight: 700, color: "primary.dark", }} > KA </Avatar>
               <Typography sx={{ fontWeight: 700, letterSpacing: 2, }}>
                 KASHOP
               </Typography>
-
               <Chip
                 label={t("HAUTE JOAILLERIE & MAISON")}
                 size="small"
@@ -89,18 +88,16 @@ export default function Register() {
           </Box>
         </Box>
 
-
         <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, borderRadius: "16px", boxShadow: ".5px 30px 70px -30px rgba(22, 11, 23, 0.58)", }}>
           <Box
             sx={{
               flex: { md: "0 0 42%" }, minHeight: { xs: 200, sm: 260, md: 600 }, position: "relative",
               background: `linear-gradient(135deg, rgba(41, 20, 30, 0.55) 0%, rgba(20, 10, 15, 0.13) 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuByKzUxyjJUNSTzAleWQ6liRhm4yf5kLuPQl9wwJdHBnSerGH0vvC6HssA83uusnysm7GcpivRt5299n0LBYCOtVj7TyPoLMsQXYBGUveKn8js8bf_3DG8sLQeU9hn3G_9n1zS4wHrDF5wjh4jR3Cbp6KHHC9tmB3QuNYgh9F1L1yMbCRFKkkB2LGCUi1hPHocBXSSylyyux2_sAfGEBiGEqMnlIPhOoFT_QliAKAAGJ0IMuFV-m5E')`,
-              backgroundSize: "cover", backgroundPosition: "center", borderRadius:"16px 0 0 16px",
+              backgroundSize: "cover", backgroundPosition: "center",borderRadius: { xs: "16px 16px 0 0", md: "16px 0 0 16px" },
               backgroundRepeat: "no-repeat", p: { xs: 3, md: 4 }, display: "flex", flexDirection: "column", justifyContent: "space-between", color: "#fff",
             }}>
 
             <Chip
-              icon={<DiamondOutlinedIcon sx={{ fontSize: 14, color: "primary.main" }} />}
               label={t("LE CERCLE PRIVÉ · MAISON KASHOP")}
               size="small"
               sx={{
@@ -157,10 +154,11 @@ export default function Register() {
               </Box>
 
               <Box component="form" onSubmit={handleSubmit(registerForm)} >
-                <Typography variant="h4" sx={{ fontSize: { xs: 26, md: 32 }, fontWeight: 800, lineHeight: 1.2 }} > {t("Create Your Account")} </Typography>
+                <Typography variant="h4" sx={{ fontSize: { xs: 26, md: 32 }, fontWeight: 500, lineHeight: 1.2 }} > {t("Create Your Account")} </Typography>
                 <Typography variant="body1" sx={{ color: "text.secondary", mt: 1, mb: 3, }}>
                   {t("Create your private credentials to unlock reserved acquisitions and personalized consultations.")}
                 </Typography>
+
                 {ServerErrors?.length > 0
                   ? ServerErrors.map((error, i) => (
                     <Typography key={i} color="error" sx={{ mb: 1 }}>
@@ -168,6 +166,7 @@ export default function Register() {
                     </Typography>
                   ))
                   : ""}
+                  
                 <Stack spacing={2.5}>
                   <Box>
                     <Box sx={{ display: "flex", justifyContent: "space-between", mb: 0.75 }}>
@@ -332,7 +331,7 @@ export default function Register() {
 
               <Typography sx={{ textAlign: "center", color: "text.secondary", mt: 3 }}>
                 {t("Already have an account?")}
-                <Link component={RouterLink} to="/" sx={{ color: "primary.dark", fontWeight: 600, textDecoration: "none" }} > {t("Sign in →")} </Link>
+                <Link component={RouterLink} to="/auth" sx={{ color: "primary.dark", fontWeight: 600, textDecoration: "none" }} > {t("Sign in →")} </Link>
               </Typography>
             </Box>
           </Container>
