@@ -18,14 +18,15 @@ const getTheme = (mode) => {
         main: '#86C1FC',
         dark: '#1D4ED8',
       },
-      background: {
-        default: mode === 'light' ?  '#121212': '#DCE7EE',
+        background: {
+        default: mode === 'light' ? '#DCE7EE' : '#121212',
         paper: mode === 'light' ? '#EBF2F7' : '#0f0f0f',
       },
       text: {
-        primary: mode === 'light' ? '#EBF2F7' : '#2F3E46',
-        secondary: mode === 'light' ?'#94A3B8'  :'#5C6B73' ,
+        primary: mode === 'light' ? '#2F3E46' : '#EBF2F7',
+        secondary: mode === 'light' ? '#5C6B73' : '#6f7782',
       },
+     
       typography: {
         fontFamily: ['Tajawal', 'sans-serif'].join(','),
       },
