@@ -11,7 +11,6 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { LoginSchema } from "../../../validation/LoginSchema";
 import { useTheme } from "@mui/material/styles";
 import { Link as RouterLink } from "react-router-dom";
-
 import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined';
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
@@ -28,7 +27,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 
 
 export default function Login() {
-  const { t } = useTranslation()
+  const { t , i18n} = useTranslation()
   const theme = useTheme();
   const [ServerErrors, setServerErrors] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
@@ -41,7 +40,7 @@ export default function Login() {
 
   const gradientBackground = `linear-gradient(90deg, ${theme.palette.secondary.main} 0%, #F1A9D6 100%)`;
 
-  const fieldLabelArSx = { fontSize: 13, color: " text.secondary" };
+  const fieldLabelArSx = { fontSize: 13, color: "text.secondary" };
   const fieldLabelSx = { fontSize: 14, fontWeight: 700, color: "primary.dark" };
   const pillInputSx = {
     "& .MuiOutlinedInput-root": {
@@ -97,9 +96,9 @@ export default function Login() {
         setToken(response.data.accessToken);
         Swal.fire({
           icon: 'success',
-          title: 'You have successfully logged in',
-          text: 'You have successfully logged in',
-          confirmButtonText: 'Okay'
+          title:t("You have successfully logged in"),
+          text: t("You have successfully logged in"),
+          confirmButtonText: t('Okay')
         })
         navigate('/');
       }
@@ -109,11 +108,15 @@ export default function Login() {
       setServerErrors(err.response.data.message);
     }
   };
+  const changeLanguage = () => {
+    const newLang = i18n.language === "ar" ? "en" : "ar";
+    i18n.changeLanguage(newLang);
+  };
 
 
   return (
-    <Box sx={{ minHeight: '100vh', display: "flex", alignItems: "center", justifyContent: "center", py: { xs: 1.5, sm: 2 }, px: { xs:0, sm: 2 }, bgcolor: '#fff' }} >
-      <Box sx={{ width: {xs:"95% ",md:"90%"}, px: 3 }} >
+    <Box sx={{ minHeight: '100vh', display: "flex", alignItems: "center", justifyContent: "center", py: { xs: 1.5, sm: 2 }, px: { xs: 0, sm: 2 }, bgcolor: '#fff' }} >
+      <Box sx={{ width: { xs: "95% ", md: "90%" }, px: 3 }} >
         <Box alignItems="center" justifyContent="space-between" flexWrap="wrap" sx={{ px: { xs: 2, md: 2 }, py: 2, }} >
 
           <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, justifyContent: "space-between", mb: 1.5 }} >
@@ -135,16 +138,18 @@ export default function Login() {
                 <Typography variant="caption" sx={{ color: "#000" }} > {t('256-Bit Encrypted Portal')} </Typography>
               </Box>
 
-              <Box sx={{
-                display: "flex", alignItems: "center", gap: 0.75, px: 2, py: 0.75, borderRadius: "999px", backgroundColor: "#fff", boxShadow: "0 1px 4px rgba(0,0,0,0.08)", cursor: "pointer",
-                "&:hover": {
-                  boxShadow: "0 2px 6px rgba(0,0,0,0.12)",
-                },
-              }}
-              >
-                <LanguageOutlinedIcon sx={{ fontSize: 18, color: "secondary.dark" }} />
-                <Typography variant="caption" sx={{ color: "#1A1A1A", fontWeight: 500, whiteSpace: "nowrap" }} > العربية / English </Typography>
-              </Box>
+              <IconButton size="small" onClick={changeLanguage} >
+                <Box sx={{
+                  display: "flex", alignItems: "center", gap: 0.75, px: 2, py: 0.75, borderRadius: "999px", backgroundColor: "#fff", boxShadow: "0 1px 4px rgba(0,0,0,0.08)", cursor: "pointer",
+                  "&:hover": {
+                    boxShadow: "0 2px 6px rgba(0,0,0,0.12)",
+                  },
+                }}
+                >
+                  <LanguageOutlinedIcon sx={{ fontSize: 18, color: "secondary.dark" }} />
+                  <Typography variant="caption" sx={{ color: "#1A1A1A", fontWeight: 500, whiteSpace: "nowrap" }} > العربية / English </Typography>
+                </Box>
+              </IconButton>
             </Box>
           </Box>
         </Box>
@@ -186,7 +191,7 @@ export default function Login() {
                     <RemoveRedEyeOutlinedIcon sx={{ fontSize: 22 }} />
                   </Box>
                   <Typography variant="caption" sx={{ color: "#fff", fontWeight: 600, fontSize: 12.5 }}>
-                     {t("Private Previews")}
+                    {t("Private Previews")}
                   </Typography>
                 </Grid>
 
@@ -204,7 +209,7 @@ export default function Login() {
                     <LockOutlinedIcon sx={{ fontSize: 22 }} />
                   </Box>
                   <Typography variant="caption" sx={{ color: "#fff", fontWeight: 600, fontSize: 12.5 }}>
-                     {t("Vault Access")}
+                    {t("Vault Access")}
                   </Typography>
                 </Grid>
               </Grid>
@@ -221,7 +226,7 @@ export default function Login() {
               />
 
               <Box component="form" onSubmit={handleSubmit(loginForm)} >
-                <Typography variant="h4" sx={{ fontSize: { xs: 26, md: 32 }, fontWeight: 500, lineHeight: 1.2 }} > {t("Welcome Back to LUMINA")} </Typography>
+                <Typography variant="h4" sx={{ fontSize: { xs: 26, md: 32 }, fontWeight: 500, lineHeight: 1.2 }} > {t("Welcome Back to KASHOP")} </Typography>
                 <Typography dir="rtl" sx={{ color: "primary.dark", fontSize: 14, mt: 0.5, fontWeight: 600 }}>
                   {t("مرحباً بعودتك إلى لومينا الخاصة")}
                 </Typography>
@@ -240,7 +245,7 @@ export default function Login() {
                   <Box>
                     <Box sx={{ display: "flex", justifyContent: "space-between", mb: 0.75 }}>
                       <Typography sx={{ ...fieldLabelSx, mb: 0.75 }}>Client ID or Email Address</Typography>
-                      <Typography sx={fieldLabelArSx}>البريد الإلكتروني</Typography>
+                      <Typography sx={fieldLabelArSx}>المعرّف أو البريد الإلكتروني</Typography>
                     </Box>
                     <TextField
                       {...register("email")}
@@ -338,7 +343,7 @@ export default function Login() {
                       "&.Mui-disabled": { color: "#fff", opacity: 0.7 },
                     }}
                   >
-                    {isSubmitting ? <CircularProgress size={22} sx={{ color: "#fff" }} /> : "Create Your Account"}
+                    {isSubmitting ? <CircularProgress size={22} sx={{ color: "#fff" }} /> : t("Sign In To Your Account")}
                   </Button>
                 </Stack>
               </Box>
@@ -365,7 +370,7 @@ export default function Login() {
 
               <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", m: 3, gap: 1 }}>
                 <Typography variant="caption" sx={{ color: "text.secondary" }}>
-                  {t("New to the world of LUMINA?")}
+                  {t("New to the world of KASHOP?")}
                 </Typography>
                 <Link component={RouterLink} variant="caption" to="register" sx={{ color: "primary.dark", textDecoration: "none" }} >
                   {t("Apply for Private Membership →")}
@@ -380,8 +385,8 @@ export default function Login() {
           direction={{ xs: "column", sm: "row" }}
           spacing={1}
           sx={{ px: { xs: 2, md: 4 }, py: 2, mt: 2, justifyContent: "space-between", alignItems: { xs: "flex-start", sm: "center" } }}>
-          <Typography variant="caption" sx={{fontSize :{xs:"10px",md:"12px"},}}> {t("Private Client Agreement · Provenance Integrity · Maison Ethics")}</Typography>
-          <Typography variant="caption" sx={{fontSize :{xs:"10px",md:"12px"},}}> {t("© 2026 KASHOP HAUTE JOAILLERIE · GENÈVE · PARIS · RIYADH")} </Typography>
+          <Typography variant="caption" sx={{ fontSize: { xs: "10px", md: "12px" }, }}> {t("Private Client Agreement · Provenance Integrity · Maison Ethics")}</Typography>
+          <Typography variant="caption" sx={{ fontSize: { xs: "10px", md: "12px" }, }}> {t("© 2026 KASHOP HAUTE JOAILLERIE · GENÈVE · PARIS · RIYADH")} </Typography>
         </Stack>
 
       </Box>
