@@ -1,6 +1,5 @@
-import { Box } from '@mui/material';
+import CategorySection from '../../components/categorySection/CategorySection';
 import Hero from '../../components/hero/Hero';
-import { Typography } from "@mui/material";
 
 
 export default function Home() {
@@ -8,6 +7,7 @@ export default function Home() {
   return (
     <>
     <Hero/>
+<CategorySection/>
     </>
   );
 }

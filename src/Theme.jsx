@@ -28,7 +28,7 @@ const getTheme = (mode) => {
       },
      
       typography: {
-        fontFamily: ['Tajawal', 'sans-serif'].join(','),
+        fontFamily: ['Tajawal', 'sans-serif'],
       },
     },
   });
