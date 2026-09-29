@@ -31,8 +31,9 @@ export default function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <CssBaseline />
+    
         <ThemeProvider theme={getTheme(mode)} >
+             <CssBaseline />
           <RouterProvider router={router} />
         </ThemeProvider>
       </QueryClientProvider>

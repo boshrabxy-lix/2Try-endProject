@@ -12,9 +12,9 @@ export default function CategorySection() {
   if (isError) return <Box color={'red'}>{error.message}</Box>
 
   return (
-    <Box component="section" sx={{ py: { xs: 6, md: 9 } }}>
+    <Box component="section" sx={{ py: { xs: 6, md: 9 }, backgroundColor: 'background.default' }}>
       <Container maxWidth="lg">
-        <Typography component={'h2'} variant='h4' sx={{ my: 1.5, fontWeight: 500, fontSize: { xs: '1.5rem', md: '1.75rem' } }}>{t('Curated Realms')}</Typography>
+        <Typography component={'h2'} variant='h4' sx={{ my: 1.5, fontWeight: 500, fontSize: { xs: '1.5rem', md: '1.75rem' }, }}>{t('Curated Realms')}</Typography>
 
         <Box sx={{ display: 'flex', justifyContent: 'space-between', my: 1, alignItems: 'center', mb: 4, }}>
           <Typography variant="body2" sx={{ color: "text.secondary" }}> {t('Explore our meticulously crafted universes.')} </Typography>
@@ -32,7 +32,7 @@ export default function CategorySection() {
 
         <Grid container spacing={6}>
           {data.response.data.map((category, i) =>
-            <Grid item size={{ xs: 6, sm: 6, md: 3 }} key={category.name} sx={{ my: 5, }}>
+            <Grid item size={{ xs: 6, sm: 6, md: 3 }} key={category.name} sx={{ my: { xs: 1, sm: 2, md: 5 } }}>
               <Category category={category} key={category.id} index={i} />
             </Grid>
           )}

@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Home from "./pages/home/Home";
 import MainLayout from "./components/layouts/Mainlayout";
@@ -10,6 +10,8 @@ import ProductPage from "./pages/productPage/ProductPage";
 import CategoriesPage from "./pages/categoriesPage/CategoriesPage";
 import JournalAbout from "./pages/journalAbout/JournalAbout";
 import ContactSupport from "./pages/contactSupport/ContactSupport";
+import ProByCategory from "./pages/proByCategory/ProByCategory";
+import ProductDetails from "./pages/productDetails/ProductDetails";
 
 
 const router = createBrowserRouter([
@@ -41,8 +43,14 @@ const router = createBrowserRouter([
         path: "contact",
         element: <ContactSupport />,
       },
-
-
+      {
+        path: "Products/collections/:id",
+        element: <ProByCategory />
+      }, 
+      {
+        path: "Products/:id",
+        element: <ProductDetails />
+      },
     ]
   }
   , {

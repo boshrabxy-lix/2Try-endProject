@@ -28,7 +28,7 @@ export default function Navbar() {
     { label: t('Collections'), to: '/collections' },
     { label: t('New Arrivals'), to: '/products' },
     { label: t('Journal & About'), to: '/journal' },
-    { label: t('Contact & Support'), to: '/ontact' },
+    { label: t('Contact & Support'), to: '/contact' },
   ];
 
   const changeLanguage = () => {
@@ -92,7 +92,7 @@ export default function Navbar() {
 
             {token && (
               <IconButton component={RouterLink} to="/Carts" size="small" sx={{ color: "text.primary" }}>
-                <Badge variant="dot" color="secondary" invisible={cartCount === 0}>
+                <Badge variant="dot" color="secondary">
                   <ShoppingBagOutlinedIcon fontSize="small" />
                 </Badge>
               </IconButton>

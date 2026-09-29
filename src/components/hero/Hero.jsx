@@ -64,7 +64,7 @@ export default function Hero({ slides = defaultSlides, autoplayDelay = 5200 }) {
               }} >
 
                 <Typography variant='caption' sx={{ color: 'primary.dark', fontWeight: 700, letterSpacing: 2, fontSize: 13, mb: 1.5, textTransform: 'uppercase', }} > {t(slide.eyebrow)} </Typography>
-                <Typography component="h1" sx={{ fontWeight: 800, fontSize: { xs: 34, md: 48 }, lineHeight: 1.15, mb: 3, }} > {t(slide.title)} </Typography>
+                <Typography component="h1" sx={{ fontWeight: 800, fontSize: { xs: 34, md: 48 }, lineHeight: 1.15, mb: 3,color:'#000' }} > {t(slide.title)} </Typography>
 
                 <Button
                   href={slide.buttonLink}

@@ -1,19 +1,17 @@
-import { Typography } from '@mui/material';
-import { Box, Link } from '@mui/material';
+import { Box, Typography, Link } from '@mui/material';
 import { Link as RouterLink } from "react-router-dom";
 import catPrimary from '../../assets/CategoryImg/catPrimary.webp';
 import catSecondary from '../../assets/CategoryImg/catSecondary.webp';
 import catTertiary from '../../assets/CategoryImg/catTertiary.webp';
 import catNeutral from '../../assets/CategoryImg/catNeutral.webp';
 
-export default function CategorySectionUi({ category, index }) {
+export default function CategoryUi({ category, index }) {
     const cat_IMAGES = [catPrimary, catSecondary, catTertiary, catNeutral];
     const image = cat_IMAGES[index % cat_IMAGES.length];
-
     return (
         <>
             <Link component={RouterLink} to={`/Products/collections/${category.id}`} underline="none" sx={{
-                display: 'inline-flex',
+                color: 'inherit', display: 'inline-flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: 2,
@@ -48,11 +46,11 @@ export default function CategorySectionUi({ category, index }) {
                         loading="lazy"
                         sx={{
                             display: 'block',
-                            width: { xs: 140, sm: 170, md: 200 },
+                            width: { xs: 140, sm: 170, md: 192 },
                             borderRadius: '50%',
                             border: '6px solid',
                             borderColor: 'transparent',
-                            objectFit: 'cover',        
+                            objectFit: 'cover',
                             cursor: 'pointer',
                             transition:
                                 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease',
@@ -62,9 +60,8 @@ export default function CategorySectionUi({ category, index }) {
                         }}
                     />
                 </Box>
-                    <Typography component={'h3'} sx={{ fontWeight: 500, fontSize: { xs: '16px', md: '20px' }, textAlign: 'center', mt:.5}} >{category.name}</Typography>
+                <Typography component={'h3'} sx={{ fontWeight: 500, fontSize: { xs: '1rem', md: '1.15rem' }, textAlign: 'center', }} >{category.name}</Typography>
             </Link >
-
         </>
     )
 }
