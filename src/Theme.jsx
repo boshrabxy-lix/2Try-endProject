@@ -19,7 +19,7 @@ const getTheme = (mode) => {
         dark: '#1D4ED8',
       },
         background: {
-        default: mode === 'light' ? '#DCE7EE' : '#121212',
+        default: mode === 'light' ? '#DCE7EE' : '#212121',
         paper: mode === 'light' ? '#EBF2F7' : '#0f0f0f',
       },
       text: {

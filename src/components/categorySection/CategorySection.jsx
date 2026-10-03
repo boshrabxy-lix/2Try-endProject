@@ -12,7 +12,7 @@ export default function CategorySection() {
   if (isError) return <Box color={'red'}>{error.message}</Box>
 
   return (
-    <Box component="section" sx={{ py: { xs: 6, md: 9 }, backgroundColor: 'background.default' }}>
+    <Box component="section" sx={{ py: { xs: 6, md: 9 }, backgroundColor: 'background.paper' }}>
       <Container maxWidth="lg">
         <Typography component={'h2'} variant='h4' sx={{ my: 1.5, fontWeight: 500, fontSize: { xs: '1.5rem', md: '1.75rem' }, }}>{t('Curated Realms')}</Typography>
 

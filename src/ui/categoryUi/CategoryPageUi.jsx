@@ -4,18 +4,21 @@ import catPrimary from '../../assets/CategoryImg/catPrimary.webp';
 import catSecondary from '../../assets/CategoryImg/catSecondary.webp';
 import catTertiary from '../../assets/CategoryImg/catTertiary.webp';
 import catNeutral from '../../assets/CategoryImg/catNeutral.webp';
+import catGray from '../../assets/CategoryImg/catGray.webp';
+import catlightauzar from '../../assets/CategoryImg/catlightauzar.webp';
+import catmoave from '../../assets/CategoryImg/catmoave.webp';
+import catNeutralDark from '../../assets/CategoryImg/catNeutralDark.webp';
+import catPink from '../../assets/CategoryImg/catPink.webp';
+import catTeal from '../../assets/CategoryImg/catTeal.webp';
+import catWhite from '../../assets/CategoryImg/catWhite.webp';
 
 export default function CategoryUi({ category, index }) {
-    const cat_IMAGES = [catPrimary, catSecondary, catTertiary, catNeutral];
+    const cat_IMAGES = [catPrimary, catSecondary, catTertiary, catNeutral, catGray, catTeal, catPink, catlightauzar, catmoave, catNeutralDark, catWhite,];
     const image = cat_IMAGES[index % cat_IMAGES.length];
     return (
         <>
             <Link component={RouterLink} to={`/Products/collections/${category.id}`} underline="none" sx={{
-                color: 'inherit', display: 'inline-flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 2,
-                color: 'text.primary',
+                color: 'inherit', display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 2, color: 'text.primary',
                 '&:hover .circle, &:focus-visible .circle': {
                     borderColor: 'primary.main',
                     transform: 'scale(1.06)',
@@ -27,9 +30,8 @@ export default function CategoryUi({ category, index }) {
                 <Box className="circle"
                     sx={{
                         p: 4, width: { xs: 140, sm: 170, md: 192 }, height: { xs: 140, sm: 170, md: 192 }, borderRadius: "50%",
-                        display: "flex", alignItems: "center", justifyContent: "center", overflow: 'hidden',
+                        display: "flex", alignItems: "center", justifyContent: "center", overflow: 'hidden', borderColor: 'transparent',
                         cursor: "pointer", transition: " border-color .5s ease, color .5s ease", border: '6px solid',
-                        borderColor: 'transparent',
                         transition:
                             'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease',
                         willChange: 'transform',
@@ -45,13 +47,8 @@ export default function CategoryUi({ category, index }) {
                         alt={category.name}
                         loading="lazy"
                         sx={{
-                            display: 'block',
-                            width: { xs: 140, sm: 170, md: 192 },
-                            borderRadius: '50%',
-                            border: '6px solid',
-                            borderColor: 'transparent',
-                            objectFit: 'cover',
-                            cursor: 'pointer',
+                            display: 'block', width: { xs: 140, sm: 170, md: 192 }, borderRadius: '50%', border: '6px solid', borderColor: 'transparent',
+                            objectFit: 'cover', cursor: 'pointer',
                             transition:
                                 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease',
                             '@media (prefers-reduced-motion: reduce)': {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import useProByCategory from '../../hooks/useProByCategory'
 import Loader from '../../components/loader/Loader';
 import { Box, Typography, Grid, Container } from '@mui/material';
@@ -17,8 +17,8 @@ export default function ProByCategory() {
     if (isError) return <Box color={'red'}>{error.message}</Box>
     return (
         <>
-            <Container maxWidth="lg" sx={{ py: 5 }}>
-                <Box className="productsSection">
+            <Box className="productsSection" sx={{ py: 5, backgroundColor: 'background.paper' }}>
+                <Container maxWidth="lg">
                     <Typography component={'h2'} variant='h2' sx={{ mb: 3 }}>{t('Products')}</Typography>
                     <Grid container spacing={3}>
                         {data.response.length === 0 ? (
@@ -30,14 +30,14 @@ export default function ProByCategory() {
                             </Box>
                         ) : (
                             data.response.map((product) => (
-                                <Grid item size={{ xs: 12, sm: 6, md: 3 }} key={product.id}>
+                                <Grid item size={{ xs: 12, sm: 6, md: 2.5 }} key={product.id}>
                                     <Product product={product} />
                                 </Grid>
                             ))
                         )}
                     </Grid>
-                </Box>
-            </Container>
+                </Container>
+            </Box>
         </>
     )
 }

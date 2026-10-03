@@ -12,7 +12,7 @@ export default function CategoriesPage() {
   if (isLoading) return <Loader />
   if (isError) return <Box color={'red'}>{error.message}</Box>
   return (
-    <Box className="categories" sx={{ py: 7 }}>
+    <Box className="categories" sx={{ py: 7 , backgroundColor: 'background.default'}} >
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
         <Typography component={'h2'} variant='h2' sx={{ mb: 3 }}> {t('Collections')}</Typography>
         <Grid container spacing={5}>
