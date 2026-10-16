@@ -1,9 +1,9 @@
 import { Link as RouterLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
-import { Box, Button, Container, Link, Stack, Typography, Grid } from '@mui/material';
+import { Box, Container, Link, Typography, Grid } from '@mui/material';
 import useCategories from '../../hooks/useCategories';
 import Loader from '../loader/Loader';
-import Category from '../../ui/categoryUi/CategorySectionUi';
+import Category from '../../ui/categoryUi/CategoryUi';
 
 export default function CategorySection() {
   const { t } = useTranslation();

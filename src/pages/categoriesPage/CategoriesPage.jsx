@@ -1,4 +1,4 @@
-import Category from '../../ui/categoryUi/CategoryPageUi';
+import Category from '../../ui/categoryUi/CategoryUi';
 import { Box, Typography, Container, Grid } from '@mui/material';
 import Loader from '../../components/loader/Loader';
 import useCategories from '../../hooks/useCategories';
