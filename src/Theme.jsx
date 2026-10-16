@@ -26,10 +26,9 @@ const getTheme = (mode) => {
         primary: mode === 'light' ? '#2F3E46' : '#EBF2F7',
         secondary: mode === 'light' ? '#5C6B73' : '#6f7782',
       },
-     
-      typography: {
-        fontFamily: ['Tajawal', 'sans-serif'],
-      },
+    },
+    typography: {
+      fontFamily: ['Tajawal', 'sans-serif'].join(','),
     },
   });
 };
