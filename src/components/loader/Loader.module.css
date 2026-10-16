@@ -1,8 +1,6 @@
 .loader {
-  --color-1: @color-primary;
-  --color-2: #ff3d00;
   --size: 1px;
-
+    position: relative; 
   width: calc(48 * var(--size));
   height: calc(48 * var(--size));
   border-radius: 50%;
@@ -26,10 +24,6 @@
   animation: rotation 0.5s linear infinite reverse;
 }
 @keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
