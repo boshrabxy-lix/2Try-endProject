@@ -12,6 +12,7 @@ import JournalAbout from "./pages/journalAbout/JournalAbout";
 import ContactSupport from "./pages/contactSupport/ContactSupport";
 import ProByCategory from "./pages/proByCategory/ProByCategory";
 import ProductDetails from "./pages/productDetails/ProductDetails";
+import Favorites from "./pages/favorites/Favorites";
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "journal",
         element: <JournalAbout />,
+      }, 
+      {
+        path: "favorites",
+        element: <Favorites />,
       },
       {
         path: "contact",
