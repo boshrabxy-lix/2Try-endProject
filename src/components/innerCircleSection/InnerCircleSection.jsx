@@ -8,13 +8,13 @@ import { useTranslation } from 'react-i18next';
 export default function InnerCircleSection() {
     const { t } = useTranslation();
     const FEATURES = [
-        { id: 1, icon: <AutoAwesomeIcon sx={{ fontSize: 20 }} />, text: 'Complimentary Bespoke Tailoring' },
-        { id: 2, icon: <RoomServiceOutlinedIcon sx={{ fontSize: 20 }} />, text: '24/7 Dedicated Luxury Concierge' },
+        { id: 1, icon: <AutoAwesomeIcon sx={{ fontSize: 20 }} />, text: t('Complimentary Bespoke Tailoring') },
+        { id: 2, icon: <RoomServiceOutlinedIcon sx={{ fontSize: 20 }} />, text: t('24/7 Dedicated Luxury Concierge') },
     ];
 
     return (
         <Box component="section" sx={{
-            py: { xs: 6, md: 10 }, my: { xs: 6, md: 10 },
+            py: { xs: 6, md: 10 },
             background: (theme) =>
                 theme.palette.mode === 'light'
                     ? `
