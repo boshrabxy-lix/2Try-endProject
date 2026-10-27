@@ -122,7 +122,7 @@ export default function Login() {
           <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, justifyContent: "space-between", mb: 1.5 }} >
             <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, }} >
               <Avatar sx={{ bgcolor: '#0060732d', width: 35, height: 35, fontSize: 13, boxShadow: "0 0 0 1px rgba(208,169,254,0.35), 0 30px 70px -30px rgba(74,21,75,0.35)", fontWeight: 700, color: "primary.dark", }} > KA </Avatar>
-              <Typography sx={{ fontWeight: 700, letterSpacing: 2, }}>
+              <Typography sx={{ fontWeight: 700, letterSpacing: 2,color:"#000" }}>
                 KASHOP
               </Typography>
 
@@ -226,7 +226,7 @@ export default function Login() {
               />
 
               <Box component="form" onSubmit={handleSubmit(loginForm)} >
-                <Typography variant="h4" sx={{ fontSize: { xs: 26, md: 32 }, fontWeight: 500, lineHeight: 1.2 }} > {t("Welcome Back to KASHOP")} </Typography>
+                <Typography variant="h4" sx={{ fontSize: { xs: 26, md: 32 }, fontWeight: 500, lineHeight: 1.2,color:'#000' }} > {t("Welcome Back to KASHOP")} </Typography>
                 <Typography dir="rtl" sx={{ color: "primary.dark", fontSize: 14, mt: 0.5, fontWeight: 600 }}>
                   {t("مرحباً بعودتك إلى لومينا الخاصة")}
                 </Typography>
@@ -349,7 +349,7 @@ export default function Login() {
               </Box>
 
               <Divider sx={{ my: 4, "&::before, &::after": { borderColor: "background.default" } }}>
-                <Typography variant="caption" color="text.secondary">
+                <Typography variant="caption" sx={{ color: "text.secondary" }}>
                   {t("OR INSTANT AUTHANTICATION")}
                 </Typography>
               </Divider>

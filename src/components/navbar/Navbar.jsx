@@ -1,31 +1,41 @@
 import React, { useState } from 'react';
 import { useLocation, Link as RouterLink } from "react-router-dom";
-import { AppBar, IconButton, Toolbar, Badge, Link, Drawer, List, ListItemButton, ListItemText, useTheme, } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import { AppBar, Toolbar, Box, Typography, IconButton, Badge, Link, Drawer, List, ListItemButton, ListItemText, Menu, MenuItem, useTheme, Button } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import LightModeIcon from '@mui/icons-material/LightMode';
-import LanguageIcon from '@mui/icons-material/Language';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import LightModeIcon from "@mui/icons-material/LightMode";
+import LanguageIcon from "@mui/icons-material/Language";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useTranslation } from "react-i18next";
-import i18n from "../../i18next";
-import ProfileMenu from '../profileMenu/ProfileMenu';
-import useThemeStore from '../../store/useThemeStore';
+import ProfileMenu from "../profileMenu/ProfileMenu";
+import useThemeStore from "../../store/useThemeStore";
 import useAuthStore from "../../store/useAuthStore";
 import useCart from "../../hooks/useCart";
 
 export default function Navbar() {
-  const { t } = useTranslation();
-  const location = useLocation();
+  const { t, i18n } = useTranslation();
+  const theme = useTheme();
   const { mode, toggleTheme } = useThemeStore();
   const token = useAuthStore((state) => state.token);
-  const theme = useTheme();
-  const [drawerOpen, setDrawerOpen] = useState(false);
-
   const { data } = useCart();
+  const location = useLocation();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [langAnchor, setLangAnchor] = useState(null);
+
   const cartCount = data?.items?.length ?? 0;
+  const currentLang = i18n.language?.startsWith("ar") ? "ar" : "en";
+
+  const languages = [
+    { code: "en", label: "English" },
+    { code: "ar", label: "العربية" },
+  ];
+
+  const handleChangeLanguage = (code) => {
+    i18n.changeLanguage(code);
+    document.dir = code === "ar" ? "rtl" : "ltr";
+    setLangAnchor(null);
+  };
 
   const navLinks = [
     { label: t('Home'), to: '/' },
@@ -34,11 +44,6 @@ export default function Navbar() {
     { label: t('Journal & About'), to: '/journal' },
     { label: t('Contact & Support'), to: '/contact' },
   ];
-
-  const changeLanguage = () => {
-    const newLang = i18n.language === "ar" ? "en" : "ar";
-    i18n.changeLanguage(newLang);
-  };
 
   return (
     <Box component="header">
@@ -55,15 +60,11 @@ export default function Navbar() {
             {navLinks.map((link) => {
               const isActive = location.pathname === link.to;
               return (
-                <Link
-                  key={link.to} to={link.to} component={RouterLink} underline="none"
+                <Link key={link.to} to={link.to} component={RouterLink} underline="none"
                   sx={{
-                    color: isActive ? "primary.dark" : "text.secondary", fontWeight: 500, fontSize: { md: '13px', lg: '14px' }, letterSpacing: 0.6, pb: "4px", whiteSpace: 'nowrap',
-                    borderBottom: isActive
-                      ? `2px solid ${theme.palette.primary.dark}`
-                      : "2px solid transparent",
-                    display: { xs: "none", md: "flex" },
-                    transition: "color 0.2s ease, border-color 0.2s ease",
+                    display: { xs: "none", md: "flex" }, color: isActive ? "primary.dark" : "text.secondary", pb: "4px",
+                    fontWeight: 500, fontSize: { md: "13px", lg: "14px" }, letterSpacing: 0.6, transition: "color 0.2s ease, border-color 0.2s ease",
+                    whiteSpace: "nowrap", borderBottom: `2px solid ${isActive ? theme.palette.primary.dark : "transparent"}`,
                     "&:hover": { color: "primary.dark" },
                   }}
                 >
@@ -74,8 +75,9 @@ export default function Navbar() {
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: "center", gap: { xs: 0.5, sm: 1.5 }, flexShrink: 0 }}>
-            <IconButton onClick={changeLanguage} size="small" aria-label="change language" sx={{ color: "text.primary" }}>
-              <LanguageIcon fontSize="small" />
+            <IconButton aria-label="change language" aria-haspopup="true"
+              aria-expanded={Boolean(langAnchor) || undefined} onClick={(e) => setLangAnchor(e.currentTarget)} sx={{ color: "text.primary" }} >
+              <LanguageIcon />
             </IconButton>
 
             <IconButton onClick={toggleTheme} size="small" aria-label="toggle theme" sx={{ color: "text.primary" }}>
@@ -101,15 +103,38 @@ export default function Navbar() {
         </Toolbar>
       </AppBar>
 
-      <Drawer anchor={i18n.language === "ar" ? "right" : "left"} open={drawerOpen} onClose={() => setDrawerOpen(false)} sx={{ display: { xs: "block", md: "none" } }} >
+      <Menu anchorEl={langAnchor} open={Boolean(langAnchor)} onClose={() => setLangAnchor(null)}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }} transformOrigin={{ vertical: "top", horizontal: "center" }}
+        MenuListProps={{ disablePadding: true }}
+        slotProps={{
+          paper: {
+            elevation: 0,
+            sx: { mt: 1, minWidth: 140, borderRadius: 0, border: "1px solid", borderColor: "divider", backgroundColor: "background.paper", },
+          },
+        }}
+      >
+        {languages.map(({ code, label }) => (
+          <MenuItem key={code}
+            selected={currentLang === code}
+            onClick={() => handleChangeLanguage(code)}
+            sx={{
+              justifyContent: "center", py: 1.25, fontSize: "15px",
+              "&.Mui-selected, &.Mui-selected:hover": {
+                bgcolor: "grey.700", color: "common.white",
+              },
+            }}
+          >
+            {label}
+          </MenuItem>
+        ))}
+      </Menu>
+
+      <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)} sx={{ display: { xs: "block", md: "none" } }} >
         <Box sx={{ width: 260 }} role="presentation">
           <Typography variant="h6" sx={{ fontWeight: 800, color: "primary.dark", px: 2, py: 2 }} > KASHOP </Typography>
           <List>
             {navLinks.map((link) => (
-              <ListItemButton
-                key={link.to}
-                component={RouterLink}
-                to={link.to}
+              <ListItemButton key={link.to} component={RouterLink} to={link.to}
                 selected={location.pathname === link.to}
                 onClick={() => setDrawerOpen(false)}
               >
