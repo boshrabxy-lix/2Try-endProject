@@ -1,6 +1,6 @@
 import { Link as RouterLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
-import { Box, Container, Link, Typography, Grid } from '@mui/material';
+import { Box, Container, Link, Typography, Grid ,Alert} from '@mui/material';
 import useCategories from '../../hooks/useCategories';
 import Loader from '../loader/Loader';
 import Category from '../../ui/categoryUi/CategoryUi';
@@ -9,7 +9,7 @@ export default function CategorySection() {
   const { t } = useTranslation();
   const { data, isLoading, isError, error } = useCategories();
   if (isLoading) return <Loader />
-  if (isError) return <Box color={'red'}>{error.message}</Box>
+    if (isError) return <Alert variant="outlined" severity="error">{error?.message || t('Something went wrong')}</Alert>
 
   return (
     <Box component="section" sx={{ py: { xs: 6, md: 9 }, backgroundColor: 'background.paper' }}>

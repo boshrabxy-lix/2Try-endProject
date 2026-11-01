@@ -42,7 +42,7 @@ export default function ProfileMenu() {
             text: 'You have been successfully logged out.',
             confirmButtonText: 'Okay'
         })
-        navigate("/login");
+        navigate("/auth");
     };
 
     return (

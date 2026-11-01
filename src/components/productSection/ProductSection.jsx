@@ -1,6 +1,6 @@
 import React from 'react';
 import useProducts from '../../hooks/useProducts';
-import { Grid, Box, Button, Typography, Container } from '@mui/material';
+import { Grid, Box, Button, Typography, Container ,Alert} from '@mui/material';
 import Loader from '../loader/Loader';
 import { useTranslation } from 'react-i18next';
 import { Link as RouterLink } from 'react-router-dom';
@@ -10,8 +10,9 @@ import Product from '../../ui/product/ProductUi';
 export default function ProductsSection() {
     const { t } = useTranslation();
     const { data, isError, isLoading, error } = useProducts(3);
+    
     if (isLoading) return <Loader />
-    if (isError) return <Typography color='error'>{error?.message || t('Something went wrong')}</Typography>
+    if (isError) return <Alert variant="outlined" severity="error">{error?.message || t('Something went wrong')}</Alert>
 
     return (
         <Box className='products' component="section" sx={{ py: 5, my: 4 }}>

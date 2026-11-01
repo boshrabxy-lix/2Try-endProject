@@ -1,5 +1,5 @@
 import Category from '../../ui/categoryUi/CategoryUi';
-import { Box, Typography, Container, Grid } from '@mui/material';
+import { Box, Typography, Container, Grid,Alert } from '@mui/material';
 import Loader from '../../components/loader/Loader';
 import useCategories from '../../hooks/useCategories';
 import { useTranslation } from "react-i18next";
@@ -10,7 +10,7 @@ export default function CategoriesPage() {
   console.log(data);
 
   if (isLoading) return <Loader />
-  if (isError) return <Box color={'red'}>{error.message}</Box>
+    if (isError) return <Alert variant="outlined" severity="error">{error?.message || t('Something went wrong')}</Alert>
   return (
     <Box className="categories" sx={{ py: 7 , backgroundColor: 'background.default'}} >
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>

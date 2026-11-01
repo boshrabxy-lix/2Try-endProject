@@ -13,6 +13,7 @@ import ContactSupport from "./pages/contactSupport/ContactSupport";
 import ProByCategory from "./pages/proByCategory/ProByCategory";
 import ProductDetails from "./pages/productDetails/ProductDetails";
 import Favorites from "./pages/favorites/Favorites";
+import Checkout from "./pages/checkout/Checkout";
 
 
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />,
+      }, 
+      {
+        path: "checkout",
+        element: <Checkout />,
       },
       {
         path: "products",
