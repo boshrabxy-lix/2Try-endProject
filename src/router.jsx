@@ -13,8 +13,10 @@ import ContactSupport from "./pages/contactSupport/ContactSupport";
 import ProByCategory from "./pages/proByCategory/ProByCategory";
 import ProductDetails from "./pages/productDetails/ProductDetails";
 import Favorites from "./pages/favorites/Favorites";
-import Checkout from "./pages/checkout/Checkout";
-
+import Checkout from "./pages/cart/Checkout";
+import CheckCart from "./pages/cart/CheckCart";
+import ProtectedRouter from "../ProtectedRouter";
+import Review from "./pages/cart/Review";
 
 const router = createBrowserRouter([
   {
@@ -25,14 +27,29 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
+
       {
-        path: "cart",
-        element: <Cart />,
-      }, 
-      {
-        path: "checkout",
-        element: <Checkout />,
+        path: "Cart",
+        element:
+          <ProtectedRouter>
+            <CheckCart />,
+          </ProtectedRouter>,
+        children: [
+          {
+            index: true,
+            element: <Cart />,
+          },
+          {
+            path: "checkout",
+            element: <Checkout />,
+          },
+          {
+            path: 'review',
+            element: <Review />
+          },
+        ]
       },
+
       {
         path: "products",
         element: <ProductPage />,
@@ -44,7 +61,7 @@ const router = createBrowserRouter([
       {
         path: "journal",
         element: <JournalAbout />,
-      }, 
+      },
       {
         path: "favorites",
         element: <Favorites />,
@@ -56,11 +73,36 @@ const router = createBrowserRouter([
       {
         path: "Products/collections/:id",
         element: <ProByCategory />
-      }, 
+      },
       {
         path: "Products/:id",
-        element: <ProductDetails/>
+        element: <ProductDetails />
       },
+      //  {
+      //   path: "profile",
+      //   element:
+      //     <ProtectedRouter>
+      //       <Profile />
+      //     </ProtectedRouter>,
+      //   children: [
+      //     {
+      //       index: true,
+      //       element: <ProfileInfo />
+      //     },
+      //     {
+      //       path: "orders",
+      //       element: <ProfileOrders />
+      //     },
+      //     {
+      //       path: "settings",
+      //       element: <SettingPage />
+      //     },
+      //      {
+      //       path: "UserInfo",
+      //       element: <PUserInfo />
+      //     },
+      //   ]
+      // },
     ]
   }
   , {

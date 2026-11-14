@@ -15,7 +15,6 @@ import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined';
-import DiamondOutlinedIcon from "@mui/icons-material/DiamondOutlined";
 import { useTheme } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
 import i18n from "../../../i18next";
@@ -31,7 +30,7 @@ export default function Register() {
   });
 
   const gradientBackground = `linear-gradient(90deg, ${theme.palette.secondary.main} 0%, #F1A9D6 100%)`;
-  const fieldLabelArSx = { fontSize: 13, color: " text.secondary" };
+  const fieldLabelArSx = { fontSize: 13, color: "text.secondary" };
   const fieldLabelSx = { fontSize: 14, fontWeight: 700, color: "primary.dark" };
   const pillInputSx = {
     "& .MuiOutlinedInput-root": {
@@ -64,7 +63,7 @@ export default function Register() {
           <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, justifyContent: "space-between", mb: 1.5 }} >
             <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, }} >
               <Avatar sx={{ bgcolor: '#0060732d', width: 35, height: 35, fontSize: 13, boxShadow: "0 0 0 1px rgba(208,169,254,0.35), 0 30px 70px -30px rgba(74,21,75,0.35)", fontWeight: 700, color: "primary.dark", }} > KA </Avatar>
-              <Typography sx={{ fontWeight: 700, letterSpacing: 2, color:'#000'}}>
+              <Typography sx={{ fontWeight: 700, letterSpacing: 2, color: '#000' }}>
                 KASHOP
               </Typography>
               <Chip
@@ -160,7 +159,7 @@ export default function Register() {
               </Box>
 
               <Box component="form" onSubmit={handleSubmit(registerForm)} >
-                <Typography variant="h4" sx={{ fontSize: { xs: 26, md: 32 }, fontWeight: 500, lineHeight: 1.2 ,color:'#000'}} > {t("Create Your Account")} </Typography>
+                <Typography variant="h4" sx={{ fontSize: { xs: 26, md: 32 }, fontWeight: 500, lineHeight: 1.2, color: '#000' }} > {t("Create Your Account")} </Typography>
                 <Typography variant="body1" sx={{ color: "text.secondary", mt: 1, mb: 3, }}>
                   {t("Create your private credentials to unlock reserved acquisitions and personalized consultations.")}
                 </Typography>
