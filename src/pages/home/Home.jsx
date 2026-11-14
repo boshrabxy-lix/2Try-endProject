@@ -1,10 +1,9 @@
 import Hero from '../../components/hero/Hero';
 import CategorySection from '../../components/categorySection/CategorySection';
-
-import ProductSection from '../../components/productSection/productSection';
 import BestSellersSection from '../../components/bestSellersSection/BestSellersSection';
 import InnerCircleSection from '../../components/innerCircleSection/InnerCircleSection';
 import LimitedEditionSection from '../../components/limitedEditionSection/LimitedEditionSection';
+import ProductsSection from '../../components/productSection/productSection';
 
 
 
@@ -16,7 +15,8 @@ export default function Home() {
       <BestSellersSection />
       <InnerCircleSection/>
       <LimitedEditionSection/>
-      <ProductSection />
+      <ProductsSection />
+
     </>
   );
 }
