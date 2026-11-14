@@ -10,7 +10,6 @@ import Product from '../../ui/product/ProductUi';
 export default function ProductsSection() {
     const { t } = useTranslation();
     const { data, isError, isLoading, error } = useProducts(3);
-    
     if (isLoading) return <Loader />
     if (isError) return <Alert variant="outlined" severity="error">{error?.message || t('Something went wrong')}</Alert>
 
